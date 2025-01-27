@@ -1,7 +1,9 @@
+import Box from "@mui/material/Box";
+
 export const Header = () => {
   return (
-    <>
-      <h2>Header</h2>
-    </>
+    <Box sx={{ background: "pink" }}>
+      <h1>TODO List</h1>
+    </Box>
   );
 };
