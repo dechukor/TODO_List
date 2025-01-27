@@ -6,7 +6,7 @@ Git Flow:
 - development - ветка разработки приложения
   - feature/PRJ-[номер задачи] - ветки для разработки отдельных составляющих приложения
     - PRJ-01 - инсталляция проекта Vite/React, создание файловой структуры проекта
-    - PRJ-02 - создание структурных компонент TodoPage, Header, Main, Footer    
+    - PRJ-02 - создание структурных компонент TodoPage, Header, Main, Footer, AddTask, ListTask, Task.    
     - PRJ-03 - ...
 
 
