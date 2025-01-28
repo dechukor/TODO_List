@@ -9,8 +9,8 @@ export const Task = () => {
       sx={{
         width: "30%",
         minWidth: "300px",
-        height: "150px",
-        // margin: "10px",
+        height: "auto",
+        padding: "10px",
         background: "grey",
       }}
     >

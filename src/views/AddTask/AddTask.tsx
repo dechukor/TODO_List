@@ -1,9 +1,12 @@
 import Box from "@mui/material/Box";
+import { TextField } from "@mui/material";
+import { Button, Input } from "../../components";
 
 export const AddTask = () => {
   return (
-    <Box sx={{ background: "cyan" }}>
-      <h2>Add task</h2>
+    <Box sx={{ display: "flex", justifyContent: "center", background: "cyan" }}>
+      <Input />
+      <Button>Add task</Button>
     </Box>
   );
 };
