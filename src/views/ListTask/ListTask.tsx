@@ -1,10 +1,10 @@
 import Box from "@mui/material/Box";
 import { Task } from "../";
 
-const result: JSX.Element[] = [];
-for (let i = 0; i < 3; i++) {
-  result.push(<Task></Task>);
-}
+// const result: JSX.Element[] = [];
+// for (let i = 0; i < 3; i++) {
+//   result.push(<Task></Task>);
+// }
 
 export const ListTask = () => {
   return (
@@ -18,7 +18,8 @@ export const ListTask = () => {
         padding: "20px",
       }}
     >
-      {result}
+      <Task></Task>
+      {/* {result} */}
     </Box>
   );
 };
