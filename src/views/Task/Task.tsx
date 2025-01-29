@@ -3,6 +3,7 @@ import { Button, Checkbox } from "../../components";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { styled } from "@mui/material/styles";
+import { TaskType } from "../../types";
 
 const TaskContainer = styled(Box)`
   display: flex;
@@ -39,18 +40,22 @@ const TaskBoxButton = styled(Box)`
   padding: 0.5rem;
 `;
 
-export const Task = () => {
+type TaskProps = {
+  task: TaskType;
+};
+
+export const Task = ({ task }: TaskProps) => {
   return (
     <TaskContainer>
       <TaskBoxButton>
-        <Checkbox checked color="success" />
+        <Checkbox checked={task.completed} color="success" />
       </TaskBoxButton>
       <>
         <DateBox>
           <DataText>Create: 23.01.2025</DataText>
           <DataText>Deadline: 30.01.2025</DataText>
         </DateBox>
-        <TaskText>Task 1: jshjsdhjsdhjshdjshdjshd</TaskText>
+        <TaskText>{task.title}</TaskText>
       </>
       <TaskBoxButton>
         <Button>

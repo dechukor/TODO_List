@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
 import { Task } from "../";
+import { tasks } from "../../data";
 
 export const ListTask = () => {
   return (
@@ -12,7 +13,9 @@ export const ListTask = () => {
         padding: "20px",
       }}
     >
-      <Task></Task>
+      {tasks.map((task) => {
+        return <Task key={task.id} task={task}></Task>;
+      })}
     </Box>
   );
 };
