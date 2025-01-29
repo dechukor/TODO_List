@@ -30,7 +30,7 @@ const DateBox = styled(Box)`
   padding: 0.5rem;
 `;
 
-const DataText = styled(Box)`
+const DateText = styled(Box)`
   font-size: 0.7rem;
 `;
 
@@ -58,17 +58,17 @@ export const Task = ({ task }: TaskProps) => {
       </TaskBoxButton>
       <>
         <DateBox>
-          <DataText>
+          <DateText>
             Create:
             <br />
             {task.dateCreate ? task.dateCreate : "not defined"}
-          </DataText>
+          </DateText>
           <DateLineSeparator />
-          <DataText>
+          <DateText>
             Deadline:
             <br />
-            {task.dateDeadline ? " " + task.dateDeadline : "not defined"}
-          </DataText>
+            {task.dateDeadline ? task.dateDeadline : "not defined"}
+          </DateText>
         </DateBox>
         <TaskText>{task.title}</TaskText>
       </>
