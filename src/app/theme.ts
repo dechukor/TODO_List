@@ -7,6 +7,15 @@ export const theme = createTheme({
       main: "#272727",
       contrastText: "#999999",
     },
+    success: {
+      main: "#14A76C",
+    },
+    info: {
+      main: "#FFE400",
+    },
+    warning: {
+      main: "#FF652F",
+    },
   },
   components: {
     MuiButton: {

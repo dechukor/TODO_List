@@ -3,7 +3,7 @@ import { Button, Input } from "../../components";
 
 export const AddTask = () => {
   return (
-    <Box sx={{ display: "flex", justifyContent: "center", background: "cyan" }}>
+    <Box sx={{ display: "flex", justifyContent: "center" }}>
       <Input />
       <Button>Add task</Button>
     </Box>

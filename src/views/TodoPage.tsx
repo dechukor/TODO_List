@@ -8,7 +8,6 @@ export const TodoPage = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        background: "green",
         height: "100%",
       }}
     >
@@ -16,8 +15,7 @@ export const TodoPage = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          background: "red",
-          border: "solid black 1px",
+          // border: "solid black 1px",
           borderRadius: "10px",
           // height: "100%",
         }}
