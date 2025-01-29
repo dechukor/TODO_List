@@ -26,10 +26,16 @@ const DateBox = styled(Box)`
   flex-direction: column;
   justify-content: space-between;
   text-align: left;
+  white-space: nowrap;
+  padding: 0.5rem;
 `;
 
 const DataText = styled(Box)`
   font-size: 0.7rem;
+`;
+
+const DateLineSeparator = styled("hr")`
+  width: 70%;
 `;
 
 const TaskBoxButton = styled(Box)`
@@ -52,8 +58,17 @@ export const Task = ({ task }: TaskProps) => {
       </TaskBoxButton>
       <>
         <DateBox>
-          <DataText>Create: 23.01.2025</DataText>
-          <DataText>Deadline: 30.01.2025</DataText>
+          <DataText>
+            Create:
+            <br />
+            {task.dateCreate ? task.dateCreate : "not defined"}
+          </DataText>
+          <DateLineSeparator />
+          <DataText>
+            Deadline:
+            <br />
+            {task.dateDeadline ? " " + task.dateDeadline : "not defined"}
+          </DataText>
         </DateBox>
         <TaskText>{task.title}</TaskText>
       </>

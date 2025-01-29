@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { Task } from "../";
+import { Task } from "../Task";
 import { tasks } from "../../data";
 
 export const ListTask = () => {
