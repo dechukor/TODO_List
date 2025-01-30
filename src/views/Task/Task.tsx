@@ -48,13 +48,19 @@ const TaskBoxButton = styled(Box)`
 
 type TaskProps = {
   task: TaskType;
+  deleteTask: (id: string) => void;
 };
 
-export const Task = ({ task }: TaskProps) => {
+export const Task = ({ task, deleteTask }: TaskProps) => {
+  const handlerCheckbox = () => {};
   return (
     <TaskContainer>
       <TaskBoxButton>
-        <Checkbox checked={task.completed} color="success" />
+        <Checkbox
+          checked={task.completed}
+          color="success"
+          onChange={handlerCheckbox}
+        />
       </TaskBoxButton>
       <>
         <DateBox>
@@ -80,7 +86,7 @@ export const Task = ({ task }: TaskProps) => {
         <Button>
           <EditIcon />
         </Button>
-        <Button>
+        <Button onClick={() => deleteTask(task.id)}>
           <DeleteIcon />
         </Button>
       </TaskBoxButton>
