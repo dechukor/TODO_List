@@ -10,7 +10,7 @@ export const Input = styled("input")`
   border-radius: 0;
   padding: 0.5rem 0.5rem;
   height: 2rem;
-  width: 70%;
+  // width: auto;
   min-width: 100px;
 
   :focus {
