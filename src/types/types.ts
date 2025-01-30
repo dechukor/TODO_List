@@ -2,6 +2,6 @@ export type TaskType = {
   id: string;
   title: string;
   completed: boolean;
-  dateCreate?: string;
-  dateDeadline?: string;
+  dateCreate: Date | null;
+  dateDeadline: Date | null;
 };

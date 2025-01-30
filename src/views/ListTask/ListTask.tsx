@@ -11,6 +11,7 @@ export const ListTask = () => {
         justifyContent: "center",
         gap: "20px",
         padding: "20px",
+        width: "100%",
       }}
     >
       {tasks.map((task) => {

@@ -61,13 +61,17 @@ export const Task = ({ task }: TaskProps) => {
           <DateText>
             Create:
             <br />
-            {task.dateCreate ? task.dateCreate : "not defined"}
+            {task.dateCreate
+              ? task.dateCreate.toLocaleDateString()
+              : "not defined"}
           </DateText>
           <DateLineSeparator />
           <DateText>
             Deadline:
             <br />
-            {task.dateDeadline ? task.dateDeadline : "not defined"}
+            {task.dateDeadline
+              ? task.dateDeadline.toLocaleDateString()
+              : "not defined"}
           </DateText>
         </DateBox>
         <TaskText>{task.title}</TaskText>
