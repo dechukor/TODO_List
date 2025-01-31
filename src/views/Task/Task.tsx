@@ -4,6 +4,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { styled } from "@mui/material/styles";
 import { TaskType } from "../../types";
+import { useState } from "react";
 
 const TaskContainer = styled(Box)`
   display: flex;
@@ -48,11 +49,16 @@ const TaskBoxButton = styled(Box)`
 
 type TaskProps = {
   task: TaskType;
-  deleteTask: (id: string) => void;
+  indexTask: number;
+  deleteTask: (index: number) => void;
 };
 
-export const Task = ({ task, deleteTask }: TaskProps) => {
-  const handlerCheckbox = () => {};
+export const Task = ({ task, indexTask, deleteTask }: TaskProps) => {
+  const [updateTask, setUpdateTask] = useState(true);
+  const handlerCheckbox = () => {
+    task.completed = !task.completed;
+    setUpdateTask(!updateTask);
+  };
   return (
     <TaskContainer>
       <TaskBoxButton>
@@ -86,7 +92,7 @@ export const Task = ({ task, deleteTask }: TaskProps) => {
         <Button>
           <EditIcon />
         </Button>
-        <Button onClick={() => deleteTask(task.id)}>
+        <Button onClick={() => deleteTask(indexTask)}>
           <DeleteIcon />
         </Button>
       </TaskBoxButton>

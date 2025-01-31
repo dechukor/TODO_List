@@ -4,17 +4,16 @@ import { tasks } from "../../data";
 import { useState } from "react";
 
 export const ListTask = () => {
+  console.log(tasks);
   const [updateListTask, setUpdateListTask] = useState(true);
 
-  const deleteTask = (idForDel: string) => {
-    tasks.forEach((task, index) => {
-      if (task.id === idForDel) {
-        tasks.splice(index, 1);
-        return;
-      }
-    });
+  // const searchTaskById = (id: string): number => {
+  //   return tasks.findIndex((task) => task.id === id);
+  // };
+
+  const deleteTask = (indexForDel: number) => {
+    tasks.splice(indexForDel, 1);
     setUpdateListTask(!updateListTask);
-    console.log(tasks);
   };
   return (
     <Box
@@ -27,8 +26,15 @@ export const ListTask = () => {
         width: "100%",
       }}
     >
-      {tasks.map((task) => {
-        return <Task key={task.id} task={task} deleteTask={deleteTask}></Task>;
+      {tasks.map((task, index) => {
+        return (
+          <Task
+            key={task.id}
+            task={task}
+            indexTask={index}
+            deleteTask={deleteTask}
+          ></Task>
+        );
       })}
     </Box>
   );
