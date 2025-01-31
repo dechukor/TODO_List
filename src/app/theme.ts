@@ -1,20 +1,30 @@
 import { createTheme } from "@mui/material/styles";
+import { ColorsType } from "../types";
+
+export const colors: ColorsType = {
+  darkGrey: "#272727",
+  lightGrey: "#747474",
+  green: "#14A76C",
+  yellow: "#FFE400",
+  orange: "#FF652F",
+  red: "#F90B3F",
+};
 
 export const theme = createTheme({
   cssVariables: true,
   palette: {
     primary: {
-      main: "#272727",
-      contrastText: "#999999",
+      main: colors.darkGrey,
+      contrastText: colors.lightGrey,
     },
     success: {
-      main: "#14A76C",
+      main: colors.green,
     },
     info: {
-      main: "#FFE400",
+      main: colors.yellow,
     },
     warning: {
-      main: "#FF652F",
+      main: colors.red,
     },
   },
   components: {

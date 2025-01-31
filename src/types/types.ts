@@ -5,3 +5,12 @@ export type TaskType = {
   dateCreate: Date | null;
   dateDeadline: Date | null;
 };
+
+export type ColorsType = {
+  darkGrey: string;
+  lightGrey: string;
+  green: string;
+  yellow: string;
+  orange: string;
+  red: string;
+};

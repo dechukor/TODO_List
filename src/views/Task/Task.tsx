@@ -5,6 +5,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { styled } from "@mui/material/styles";
 import { TaskType } from "../../types";
 import { useState } from "react";
+import { colors } from "../../app";
 
 const TaskContainer = styled(Box)`
   display: flex;
@@ -15,7 +16,7 @@ const TaskContainer = styled(Box)`
 `;
 
 const TaskText = styled(Box)`
-  border: solid #999999 3px;
+  border: solid ${colors.lightGrey} 3px;
   text-align: left;
   width: 100%;
   height: auto;
