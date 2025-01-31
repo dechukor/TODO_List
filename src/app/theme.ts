@@ -8,6 +8,7 @@ export const colors: ColorsType = {
   yellow: "#FFE400",
   orange: "#FF652F",
   red: "#F90B3F",
+  primaryText: "white",
 };
 
 export const theme = createTheme({

@@ -16,7 +16,7 @@ const TaskContainer = styled(Box)`
 `;
 
 const TaskText = styled(Box)`
-  border: solid ${colors.lightGrey} 3px;
+  border: solid 3px;
   text-align: left;
   width: 100%;
   height: auto;
@@ -34,6 +34,7 @@ const DateBox = styled(Box)`
 
 const DateText = styled(Box)`
   font-size: 0.7rem;
+  // color: ;
 `;
 
 const DateLineSeparator = styled("hr")`
@@ -55,6 +56,26 @@ type TaskProps = {
 };
 
 export const Task = ({ task, indexTask, deleteTask }: TaskProps) => {
+  const currentDate = new Date().toISOString().slice(0, 10);
+  let colorDeadline: string;
+  let colorBorderTask: string;
+  if (task.dateDeadline === null) {
+    colorDeadline = colors.primaryText;
+  } else if (Number(task.dateDeadline) === Number(new Date(currentDate))) {
+    colorDeadline = colors.yellow;
+  } else if (Number(task.dateDeadline) < Number(new Date(currentDate))) {
+    colorDeadline = colors.red;
+  } else {
+    colorDeadline = colors.primaryText;
+  }
+
+  if (task.completed) {
+    colorBorderTask = colors.green;
+    colorDeadline = colors.primaryText;
+  } else {
+    colorBorderTask = colorDeadline;
+  }
+
   const [updateTask, setUpdateTask] = useState(true);
   const handlerCheckbox = () => {
     task.completed = !task.completed;
@@ -71,23 +92,21 @@ export const Task = ({ task, indexTask, deleteTask }: TaskProps) => {
       </TaskBoxButton>
       <>
         <DateBox>
+          <DateText>Create:</DateText>
           <DateText>
-            Create:
-            <br />
             {task.dateCreate
               ? task.dateCreate.toLocaleDateString()
               : "not defined"}
           </DateText>
           <DateLineSeparator />
-          <DateText>
-            Deadline:
-            <br />
+          <DateText>Deadline:</DateText>
+          <DateText sx={{ color: colorDeadline }}>
             {task.dateDeadline
               ? task.dateDeadline.toLocaleDateString()
               : "not defined"}
           </DateText>
         </DateBox>
-        <TaskText>{task.title}</TaskText>
+        <TaskText sx={{ borderColor: colorBorderTask }}>{task.title}</TaskText>
       </>
       <TaskBoxButton>
         <Button>
