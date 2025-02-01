@@ -5,3 +5,4 @@ export * from "./Main";
 export * from "./AddTask";
 export * from "./ListTask";
 export * from "./Task";
+export * from "./InputBlock";

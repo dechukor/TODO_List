@@ -13,5 +13,6 @@ export type ColorsType = {
   yellow: string;
   orange: string;
   red: string;
+  blue: string;
   primaryText: string;
 };

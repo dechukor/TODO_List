@@ -10,7 +10,7 @@ export const Main = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
+        gap: "1rem",
       }}
     >
       <AddTask updateMain={updateMain} setUpdateMain={setUpdateMain}></AddTask>

@@ -8,6 +8,7 @@ export const colors: ColorsType = {
   yellow: "#FFE400",
   orange: "#FF652F",
   red: "#F90B3F",
+  blue: "#1F75FE",
   primaryText: "white",
 };
 
