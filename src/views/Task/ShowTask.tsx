@@ -9,6 +9,7 @@ import { colors } from "../../app";
 const TaskText = styled(Box)`
   border: solid 3px;
   text-align: left;
+  word-break: break-word;
   width: 100%;
   height: auto;
   padding: 0.5rem;
@@ -17,7 +18,7 @@ const TaskText = styled(Box)`
 const DateBox = styled(Box)`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   text-align: left;
   white-space: nowrap;
   padding: 0.5rem;
