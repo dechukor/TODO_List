@@ -9,8 +9,6 @@ import { TaskType } from "../types/types.ts";
 export const App = () => {
   const [tasks, setTasks] = useState<TaskType[]>(tasksData);
 
-  console.log("Render - ", tasks);
-
   return (
     <ThemeProvider theme={theme}>
       <TodoPage tasks={tasks} setTasks={setTasks} />

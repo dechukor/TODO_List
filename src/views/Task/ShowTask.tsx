@@ -102,10 +102,7 @@ export const TaskShow = ({
       </>
 
       <TaskBoxButton>
-        <Button
-          sx={{ color: colors.orange, borderColor: colors.orange }}
-          onClick={() => setEditMode(true)}
-        >
+        <Button onClick={() => setEditMode(true)}>
           <EditIcon />
         </Button>
         <Button onClick={() => deleteTask(task.id)}>

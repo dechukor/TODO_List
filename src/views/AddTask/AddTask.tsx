@@ -11,15 +11,12 @@ const AddTaskContainer = styled(Box)`
   display: flex;
   padding: 0.5rem;
   flex-direction: column;
-  // align-items: center;
   gap: 0.5rem;
-  // width: 100%;
 `;
 
 const ButtonContainer = styled(Box)`
   display: flex;
   justify-content: center;
-  // align-items: center;
   gap: 0.5rem;
 `;
 
