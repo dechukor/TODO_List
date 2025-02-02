@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { TaskType } from "../../types";
-import { TaskShow } from "./ShowTask";
+import { ShowTask } from "./ShowTask";
 import { TaskEditForm } from "./EditTask";
 import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { useState } from "react";
 
 const TaskContainer = styled(Box)`
   display: flex;
@@ -53,7 +53,7 @@ export const Task = ({ task, deleteTask, setTasks }: TaskProps) => {
           saveEditTask={saveEditTask}
         />
       ) : (
-        <TaskShow
+        <ShowTask
           task={task}
           deleteTask={deleteTask}
           setCompletedTask={setCompletedTask}

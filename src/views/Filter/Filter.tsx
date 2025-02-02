@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import { ToggleButtonGroup as ToggleButtonGroupMUI } from "@mui/material/";
 import { ToggleButton } from "../../components";
 import { FilterStateType, TaskType } from "../../types";
 
@@ -12,6 +12,12 @@ const FilterContainer = styled(Box)`
   gap: 0.5rem;
   width: 100%;
 `;
+
+export const ToggleButtonGroup = styled(ToggleButtonGroupMUI)({
+  "@media screen and (max-width: 800px)": {
+    flexDirection: "column",
+  },
+});
 
 type FilterProps = {
   tasks: TaskType[];

@@ -24,7 +24,7 @@ const DateBox = styled(Box)`
 `;
 
 const DateText = styled(Box)`
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   // color: ;
 `;
 
@@ -40,19 +40,19 @@ const TaskBoxButton = styled(Box)`
   padding: 0.5rem;
 `;
 
-type TaskShowProps = {
+type ShowTaskProps = {
   task: TaskType;
   deleteTask: (id: string) => void;
   setCompletedTask: (id: string) => void;
   setEditMode: (editMode: boolean) => void;
 };
 
-export const TaskShow = ({
+export const ShowTask = ({
   task,
   deleteTask,
   setCompletedTask,
   setEditMode,
-}: TaskShowProps) => {
+}: ShowTaskProps) => {
   const currentDate = new Date().toISOString().slice(0, 10);
   let colorDeadline: string;
   let colorBorderTask: string;
