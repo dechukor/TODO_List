@@ -32,7 +32,14 @@ export const ListTask = ({ tasks, setTasks }: ListTaskProps) => {
         gap: "1rem",
       }}
     >
-      <Filter filterState={filterState} setFilterState={setFilterState} />
+      <Filter
+        tasks={tasks}
+        filterState={filterState}
+        setFilterState={setFilterState}
+      />
+
+      {filteredTasks.length === 0 && <span>No tasks for display</span>}
+
       {filteredTasks.map((task) => {
         return (
           <Task

@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { ToggleButton } from "../../components";
-import { FilterStateType } from "../../types";
+import { FilterStateType, TaskType } from "../../types";
 
 const FilterContainer = styled(Box)`
   display: flex;
@@ -14,11 +14,18 @@ const FilterContainer = styled(Box)`
 `;
 
 type FilterProps = {
+  tasks: TaskType[];
   filterState: FilterStateType;
   setFilterState: (filterState: FilterStateType) => void;
 };
 
-export const Filter = ({ filterState, setFilterState }: FilterProps) => {
+export const Filter = ({ tasks, filterState, setFilterState }: FilterProps) => {
+  const countsTasks = {
+    all: tasks.length,
+    active: tasks.filter((task) => !task.completed).length,
+    completed: tasks.filter((task) => task.completed).length,
+  };
+
   return (
     <FilterContainer>
       <ToggleButtonGroup exclusive>
@@ -27,21 +34,21 @@ export const Filter = ({ filterState, setFilterState }: FilterProps) => {
           value="all"
           onChange={() => setFilterState("all")}
         >
-          Show all tasks
+          Show all tasks ({countsTasks.all})
         </ToggleButton>
         <ToggleButton
           selected={filterState === "active"}
           value="active"
           onChange={() => setFilterState("active")}
         >
-          Show active tasks
+          Show active tasks ({countsTasks.active})
         </ToggleButton>
         <ToggleButton
           selected={filterState === "completed"}
           value="completed"
           onChange={() => setFilterState("completed")}
         >
-          Show completed tasks
+          Show completed tasks ({countsTasks.completed})
         </ToggleButton>
       </ToggleButtonGroup>
     </FilterContainer>
