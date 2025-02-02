@@ -1,7 +1,13 @@
 import { Header, Main, Footer } from ".";
 import Box from "@mui/material/Box";
+import { TaskType } from "../types";
 
-export const TodoPage = () => {
+type TodoPageProps = {
+  tasks: TaskType[];
+  setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>;
+};
+
+export const TodoPage = ({ tasks, setTasks }: TodoPageProps) => {
   return (
     <Box
       sx={{
@@ -15,13 +21,11 @@ export const TodoPage = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          // border: "solid black 1px",
           borderRadius: "10px",
-          // height: "100%",
         }}
       >
         <Header />
-        <Main />
+        <Main tasks={tasks} setTasks={setTasks} />
       </Box>
       <Footer />
     </Box>

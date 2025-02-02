@@ -4,7 +4,6 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { styled } from "@mui/material/styles";
 import { TaskType } from "../../types";
-import { useState } from "react";
 import { colors } from "../../app";
 
 const TaskText = styled(Box)`
@@ -43,15 +42,15 @@ const TaskBoxButton = styled(Box)`
 
 type TaskShowProps = {
   task: TaskType;
-  indexTask: number;
-  deleteTask: (index: number) => void;
+  deleteTask: (id: string) => void;
+  setCompletedTask: (id: string) => void;
   setEditMode: (editMode: boolean) => void;
 };
 
 export const TaskShow = ({
   task,
-  indexTask,
   deleteTask,
+  setCompletedTask,
   setEditMode,
 }: TaskShowProps) => {
   const currentDate = new Date().toISOString().slice(0, 10);
@@ -74,18 +73,13 @@ export const TaskShow = ({
     colorBorderTask = colorDeadline;
   }
 
-  const [updateTask, setUpdateTask] = useState(true);
-  const handlerCheckbox = () => {
-    task.completed = !task.completed;
-    setUpdateTask(!updateTask);
-  };
   return (
     <>
       <TaskBoxButton>
         <Checkbox
           checked={task.completed}
           color="success"
-          onChange={handlerCheckbox}
+          onChange={() => setCompletedTask(task.id)}
         />
       </TaskBoxButton>
       <>
@@ -114,7 +108,7 @@ export const TaskShow = ({
         >
           <EditIcon />
         </Button>
-        <Button onClick={() => deleteTask(indexTask)}>
+        <Button onClick={() => deleteTask(task.id)}>
           <DeleteIcon />
         </Button>
       </TaskBoxButton>

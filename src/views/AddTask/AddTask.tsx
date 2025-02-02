@@ -3,12 +3,11 @@ import { Button } from "../../components";
 import { styled } from "@mui/material/styles";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { tasks } from "../../data";
 import { TaskType } from "../../types";
 import { InputBlock } from "../InputBlock";
 import { colors } from "../../app";
 
-export const AddTaskContainer = styled(Box)`
+const AddTaskContainer = styled(Box)`
   display: flex;
   padding: 0.5rem;
   flex-direction: column;
@@ -17,7 +16,7 @@ export const AddTaskContainer = styled(Box)`
   // width: 100%;
 `;
 
-export const ButtonContainer = styled(Box)`
+const ButtonContainer = styled(Box)`
   display: flex;
   justify-content: center;
   // align-items: center;
@@ -25,19 +24,20 @@ export const ButtonContainer = styled(Box)`
 `;
 
 type AddTaskProps = {
-  updateMain: boolean;
-  setUpdateMain: (value: boolean) => void;
+  setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>;
 };
 
-export const AddTask = ({ updateMain, setUpdateMain }: AddTaskProps) => {
+export const AddTask = ({ setTasks }: AddTaskProps) => {
   const [formIsOpen, setFormIsOpen] = useState(false);
   const [textTask, setTextTask] = useState("");
   const [deadlineTask, setDeadlineTask] = useState("");
+
   const clearStates = () => {
     setTextTask("");
     setDeadlineTask("");
     setFormIsOpen(false);
   };
+
   const handleClickAddTask = () => {
     const newTask: TaskType = {
       id: uuidv4(),
@@ -46,9 +46,9 @@ export const AddTask = ({ updateMain, setUpdateMain }: AddTaskProps) => {
       dateCreate: new Date(),
       dateDeadline: deadlineTask ? new Date(deadlineTask) : null,
     };
-    tasks.push(newTask);
+
+    setTasks((current) => [...current, newTask]);
     clearStates();
-    setUpdateMain(!updateMain);
   };
 
   return (

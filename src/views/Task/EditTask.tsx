@@ -6,7 +6,7 @@ import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { colors } from "../../app";
 
-export const EditTaskContainer = styled(Box)`
+const EditTaskContainer = styled(Box)`
   display: flex;
   flex-direction: column;
   border: 3px solid ${colors.orange};
@@ -16,7 +16,7 @@ export const EditTaskContainer = styled(Box)`
   width: 100%;
 `;
 
-export const ButtonContainer = styled(Box)`
+const ButtonContainer = styled(Box)`
   display: flex;
   justify-content: center;
   // align-items: center;
@@ -26,16 +26,20 @@ export const ButtonContainer = styled(Box)`
 type TypeTaskEditForm = {
   task: TaskType;
   setEditMode: (editMode: boolean) => void;
+  saveEditTask: (id: string, textTask: string, deadlineTask: string) => void;
 };
 
-export const TaskEditForm = ({ task, setEditMode }: TypeTaskEditForm) => {
+export const TaskEditForm = ({
+  task,
+  setEditMode,
+  saveEditTask,
+}: TypeTaskEditForm) => {
   const [textTask, setTextTask] = useState(task.title);
   const [deadlineTask, setDeadlineTask] = useState(
     task.dateDeadline ? task.dateDeadline.toISOString().slice(0, 10) : ""
   );
   const handleClickSaveChanges = () => {
-    task.title = textTask;
-    task.dateDeadline = deadlineTask ? new Date(deadlineTask) : null;
+    saveEditTask(task.id, textTask, deadlineTask);
     setEditMode(false);
   };
   return (
@@ -47,7 +51,7 @@ export const TaskEditForm = ({ task, setEditMode }: TypeTaskEditForm) => {
         setDeadlineTask={setDeadlineTask}
       ></InputBlock>
       <ButtonContainer>
-        <Button disabled={!textTask} onClick={() => handleClickSaveChanges()}>
+        <Button disabled={!textTask} onClick={handleClickSaveChanges}>
           Save changes
         </Button>
         <Button onClick={() => setEditMode(false)}>Close</Button>

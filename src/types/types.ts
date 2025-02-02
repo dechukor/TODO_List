@@ -16,3 +16,5 @@ export type ColorsType = {
   blue: string;
   primaryText: string;
 };
+
+export type FilterStateType = "all" | "active" | "completed";

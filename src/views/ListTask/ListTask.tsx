@@ -1,16 +1,29 @@
 import Box from "@mui/material/Box";
 import { Task } from "../Task";
-import { tasks } from "../../data";
 import { useState } from "react";
+import { Filter } from "../Filter";
+import { FilterStateType, TaskType } from "../../types";
 
-export const ListTask = () => {
-  console.log(tasks);
-  const [updateListTask, setUpdateListTask] = useState(true);
+type ListTaskProps = {
+  tasks: TaskType[];
+  setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>;
+};
 
-  const deleteTask = (indexForDel: number) => {
-    tasks.splice(indexForDel, 1);
-    setUpdateListTask(!updateListTask);
+export const ListTask = ({ tasks, setTasks }: ListTaskProps) => {
+  const [filterState, setFilterState] = useState<FilterStateType>("all");
+
+  const deleteTask = (idForDel: string) => {
+    setTasks((current) => current.filter((task) => task.id !== idForDel));
   };
+
+  let filteredTasks = tasks;
+
+  if (filterState === "completed") {
+    filteredTasks = tasks.filter((task) => task.completed);
+  } else if (filterState === "active") {
+    filteredTasks = tasks.filter((task) => !task.completed);
+  }
+
   return (
     <Box
       sx={{
@@ -19,13 +32,14 @@ export const ListTask = () => {
         gap: "1rem",
       }}
     >
-      {tasks.map((task, index) => {
+      <Filter filterState={filterState} setFilterState={setFilterState} />
+      {filteredTasks.map((task) => {
         return (
           <Task
             key={task.id}
             task={task}
-            indexTask={index}
             deleteTask={deleteTask}
+            setTasks={setTasks}
           ></Task>
         );
       })}

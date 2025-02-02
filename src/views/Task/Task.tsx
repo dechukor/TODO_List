@@ -14,22 +14,49 @@ const TaskContainer = styled(Box)`
 
 type TaskProps = {
   task: TaskType;
-  indexTask: number;
-  deleteTask: (index: number) => void;
+  deleteTask: (id: string) => void;
+  setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>;
 };
 
-export const Task = ({ task, indexTask, deleteTask }: TaskProps) => {
+export const Task = ({ task, deleteTask, setTasks }: TaskProps) => {
   const [editMode, setEditMode] = useState(false);
+
+  const setCompletedTask = (id: string) => {
+    setTasks((current) =>
+      current.map((obj) => {
+        if (obj.id === id) {
+          obj.completed = !obj.completed;
+        }
+        return obj;
+      })
+    );
+  };
+
+  const saveEditTask = (id: string, textTask: string, deadlineTask: string) => {
+    setTasks((current) =>
+      current.map((obj) => {
+        if (obj.id === id) {
+          obj.title = textTask;
+          obj.dateDeadline = deadlineTask ? new Date(deadlineTask) : null;
+        }
+        return obj;
+      })
+    );
+  };
 
   return (
     <TaskContainer>
       {editMode ? (
-        <TaskEditForm task={task} setEditMode={setEditMode} />
+        <TaskEditForm
+          task={task}
+          setEditMode={setEditMode}
+          saveEditTask={saveEditTask}
+        />
       ) : (
         <TaskShow
           task={task}
-          indexTask={indexTask}
           deleteTask={deleteTask}
+          setCompletedTask={setCompletedTask}
           setEditMode={setEditMode}
         />
       )}

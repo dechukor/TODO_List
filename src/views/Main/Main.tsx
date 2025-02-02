@@ -1,10 +1,14 @@
 import Box from "@mui/material/Box";
 import { AddTask, ListTask } from "../";
-import { useState } from "react";
 
-export const Main = () => {
-  const [updateMain, setUpdateMain] = useState(true);
+import { TaskType } from "../../types";
 
+type MainProps = {
+  tasks: TaskType[];
+  setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>;
+};
+
+export const Main = ({ tasks, setTasks }: MainProps) => {
   return (
     <Box
       sx={{
@@ -13,8 +17,9 @@ export const Main = () => {
         gap: "1rem",
       }}
     >
-      <AddTask updateMain={updateMain} setUpdateMain={setUpdateMain}></AddTask>
-      <ListTask></ListTask>
+      {/* <AddTask updateMain={updateMain} setUpdateMain={setUpdateMain}></AddTask> */}
+      <AddTask setTasks={setTasks}></AddTask>
+      <ListTask tasks={tasks} setTasks={setTasks}></ListTask>
     </Box>
   );
 };
